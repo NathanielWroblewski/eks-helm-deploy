@@ -11,7 +11,7 @@ ${UPDATE_KUBECONFIG_COMMAND}
 helm dependency update ${DEPLOY_CHART_PATH:-helm/}
 
 # Helm Deployment
-UPGRADE_COMMAND="helm upgrade --wait --atomic --install --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/} --wait --atomic --install --timeout ${TIMEOUT}"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
@@ -28,6 +28,6 @@ fi
 if [ "$DRY_RUN" = true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --dry-run"
 fi
-UPGRADE_COMMAND="${UPGRADE_COMMAND} ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/}"
+
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
