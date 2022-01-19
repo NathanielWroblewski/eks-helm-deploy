@@ -16,5 +16,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: peymanmo/eks-helm-deploy
+          repository: nathanielwroblewski/eks-helm-deploy
           tag_with_ref: true

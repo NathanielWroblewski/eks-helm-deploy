@@ -50,7 +50,7 @@ inputs:
 
 runs:
     using: 'docker'
-    image: 'docker://peymanmo/eks-helm-deploy:latest'
+    image: 'docker://nathanielwroblewski/eks-helm-deploy:v2.2'
     env:
         AWS_REGION: ${{ inputs.aws-region }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws-secret-access-key }}
@@ -65,5 +65,3 @@ runs:
         DEPLOY_CHART_PATH: ${{ inputs.chart-path }}
         DRY_RUN: ${{ inputs.dry-run }}
         TIMEOUT: ${{ inputs.timeout }}
-       
-
