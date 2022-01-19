@@ -11,7 +11,7 @@ ${UPDATE_KUBECONFIG_COMMAND}
 helm dependency update ${DEPLOY_CHART_PATH:-helm/}
 
 # Helm Deployment
-UPGRADE_COMMAND="helm upgrade ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/} --wait --atomic --install --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade --install ${DEPLOY_NAME} ${DEPLOY_CHART_PATH:-helm/} --wait --atomic --timeout ${TIMEOUT}"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }
 do
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
