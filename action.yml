@@ -28,7 +28,7 @@ inputs:
         description: 'Kubernetes namespace to use.'
         required: false
     values:
-        description: 'Comma separated list of value sets for helms. e.x: key1=value1,key2=value2'
+        description: ';; separated list of value sets for helms. e.x: key1=value1,key2=value2'
         required: false
     name:
         description: 'Helm release name.'

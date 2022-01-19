@@ -19,9 +19,14 @@ done
 if [ -n "$DEPLOY_NAMESPACE" ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} -n ${DEPLOY_NAMESPACE}"
 fi
-if [ -n "$DEPLOY_VALUES" ]; then
-    UPGRADE_COMMAND="${UPGRADE_COMMAND} --set ${DEPLOY_VALUES}"
-fi
+while [ "$DEPLOY_VALUES" != "$iter" ] ;do
+    # extract the substring from start of string up to delimiter.
+    iter=${DEPLOY_VALUES%%;;*}
+    # delete this first "element" AND next separator, from $IN.
+    DEPLOY_VALUES="${DEPLOY_VALUES#$iter;;}"
+
+    UPGRADE_COMMAND="${UPGRADE_COMMAND} --set ${iter}"
+done
 if [ "$DEBUG" = true ]; then
     UPGRADE_COMMAND="${UPGRADE_COMMAND} --debug"
 fi
